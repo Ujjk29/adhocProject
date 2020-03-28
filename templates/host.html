@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Host Portal</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
+{% endblock %}
+
+
+{% block body %}
+<h1 style="text-align:center; margin-top: 2%;">Host Portal</h1>
+<div style="width:50%; margin:2% auto">
+    <form action="/host/" method="POST">
+        <div class="form-group">
+            <input type="text" class="form-control" name="host_name" id="host_name" placeholder="Enter Your Name"
+                required>
+        </div>
+
+        <div class="form-group">
+            <input type="tel" class="form-control" name="host_tel" id="host_tel"
+                placeholder="Enter Your 10digit Mobile No." pattern="(7|8|9)\d{9}$" required>
+        </div>
+
+        <div class="form-group">
+            <input type="email" class="form-control" name="host_mail" id="host_mail" placeholder="Enter Your Email"
+                required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="host_addr" id="host_addr" placeholder="Enter Your Address"
+                required>
+        </div>
+        <div class="form-group">
+            <label style="margin-right: 10%;">Available Now?</label>
+            <input type="radio" name="host_availability" value="Yes">Yes
+            <input type="radio" name="host_availability" value="No" style="margin-left: 10%;"> No<br>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-dark" value="Upload Details">
+        </div>
+    </form>
+    <div>
+        Go To Guest Portal <button class="btn btn-light" style="margin:1% "><a href="/guest">here</a></button>
+    </div>
+    <div>
+        Already a host ??? <button class="btn btn-light" style="margin:1% "><a href="/hostlist">Click here</a></button>
+    </div>
+</div>
+
+
+{% endblock %}
