@@ -1,53 +1,37 @@
-import os
 from flask import Flask, render_template, url_for, request, redirect, flash
+from urllib import request as rs
 from flask_sqlalchemy import SQLAlchemy
+from bs4 import BeautifulSoup
 from datetime import datetime
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///main.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
 
-
-
-#database for guest details
-class Guest(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.Unicode(50), nullable = False)
-    
-    
-    def __repr__ (self):
-        return '<Task %r >' % self.id
-
-#database for host details
-class Host(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.Unicode(50), nullable = False)
-    
-
-    def __repr__ (self):
-        return '<Task %r >' % self.id
+#### web-scrapping
+url = 'https://en.wikipedia.org/wiki/Machine_learning'
+htmldata=rs.urlopen(url)
+soup = BeautifulSoup(htmldata,'html.parser')
+###end of scrapping
 
 @app.route('/')
-def index():
+def index():    
     return render_template('index.html')
 
 
-@app.route('/host/', methods=['POST','GET'])
-def host():
+@app.route('/main/', methods=['POST','GET'])
+def main():
     if request.method == 'POST':
-        h_name = request.form['host_name']
+        name = request.form['g_name']
+        location = request.form['g_loc']
         
-        new_task = Host(name=h_name)
+        head = soup.find('h3').text
+        return render_template('result.html',**locals() )
 
-        db.session.add(new_task)
-        db.session.commit()
-        return redirect('/host')
-
-    else:
-        hosts = Host.query.order_by(Host.id).all()
-        return render_template('host.html', hosts = hosts)
+    else:        
+        return render_template('main.html')
 
 
               
