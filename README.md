@@ -50,23 +50,23 @@ python3 app.py
 
 ### Corona Database Scrapping
 
-![alt text](images/result1.png)
+![alt text](static/images/result1.png)
 
 
 ### Detecting your location through city,country,state and GPS coordinates
 
-![alt text](images/main.png)
+![alt text](static/images/main.png)
 
 
 ### Twiiter sentiment Analysis of Corona near you, and hospitals,shops and restaurants near you. 
 
-![alt text](images/result2.png)
+![alt text](static/images/result2.png)
 
 ### Scrapping Google Maps for hospitals near me
 
 Uses serapi to find hospitals, shops, near you thorugh Accessing your GPS Coordinates.
 
-![alt text](images/homepage.png)
+![alt text](static/images/homepage.png)
 
 ## Contact Me
 
