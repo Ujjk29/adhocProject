@@ -35,11 +35,11 @@ covid19 = COVID19Py.COVID19()
 
 
 #####twitter api
-consumer_key = "NnXZ9s4iZJAyx4kAwUN56tyaa"
-consumer_sec = "AqvqkEkqLP2xRlgs6mhv2ByiHfX8HDIk10sSNmlAX7V6yO2sVN"
+consumer_key = ""
+consumer_sec = ""
 # access details
-access_key = "207914472-wyE27bRbnqiGtHmTDprlki2NC3hJJYoU5OehxN4o"
-access_sec = "iuG8VwxulyHQUPl9y5GS9gLVN72lirk8h26rOfzTqgSIV"
+access_key = ""
+access_sec = ""
 
 first_auth = tweepy.OAuthHandler(consumer_key, consumer_sec)
 first_auth.set_access_token(access_key, access_sec)
