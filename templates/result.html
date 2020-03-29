@@ -2,18 +2,185 @@
 
 {% block head %}
 <title>Covind 19</title>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #ffffff;
+      text-align: left;
+      padding: 8px;
+    }
+    
+</style>
 {% endblock %}
 
 
 {% block body %}
-<header class="header" id="header">
+<div class="container" >
 	<div class="container">
 		<h1>Results</h1>
         <h3>hello {{ name }}!!!</h3>
-        <h5>Your location is {{ location }}</h5>
-        <p>some text for you = {{ head }}</p>
+        <p>your lat = {{ lat }} and your long = {{ lon }}</p><span>your city = {{ city }} and your country= {{ country }}</span><br>
+        <table style="width:100%">
+            <tr>
+              <th>Event</th>
+              <th>Total no</th>
+            </tr>
+            <tr>
+              <td>no. of deaths in your country</td>
+              <td>{{ covid_data_country.deaths }}</td>              
+            </tr>
+            <tr>
+              <td>no. of confirmed cases in your country</td>
+              <td>{{ covid_data_country.confirmed }}</td>
+            </tr>
+            <tr>
+                <td>no. of recovered in your countr</td>
+                <td>{{ covid_data_country.recovered }}</td>
+              </tr>
+          </table>
+        
+        <h3>Twitter Sentiment Analysis in Your Area</h3>
+        <table style="width:100%">
+            <tr>
+                <th>Positive tweets percentage</th>
+                <th>negative tweets percentage</th>
+                <th>neutral tweets percentage</th>
+              </tr>
+              <tr>
+                <td>{{ ptweetper }}</td>              
+                <td>{{ ntweetper }}</td>
+                <td>{{ neutper }}</td>
+              </tr>               
+        </table>
+        <h3>Positive Tweets</h3>
+        <ol> 
+            <!-- For loop logic of jinja template -->
+            {%for tweetdata in ptweets%} 
+              
+                <li>{{ tweetdata.text }}</li> 
+            {%endfor%} 
+              
+        </ol> 
+        <h3>Negative Tweets</h3>
+        <ol> 
+            <!-- For loop logic of jinja template -->
+            {%for tweetdata in ntweets%} 
+              
+                <li>{{ tweetdata.text }}</li> 
+            {%endfor%} 
+              
+        </ol> 
 
-	</div>
-</header>
+        <h3>Twitter Sentiment Analysis of HOSPITALS in Your Area</h3>
+        <table style="width:100%">
+            <tr>
+                <th>Positive tweets percentage</th>
+                <th>negative tweets percentage</th>
+                <th>neutral tweets percentage</th>
+              </tr>
+              <tr>
+                <td>{{ phtweetper }}</td>              
+                <td>{{ nhtweetper }}</td>
+                <td>{{ hneutper }}</td>
+              </tr>               
+        </table>
+        <h3>Positive Tweets For hospitals</h3>
+        <ol> 
+            <!-- For loop logic of jinja template -->
+            {%for htweetdata in phtweets%} 
+              
+                <li>{{ htweetdata.text }}</li> 
+            {%endfor%} 
+              
+        </ol> 
+        <h3>Negative Tweets for Hospitals</h3>
+        <ol> 
+            <!-- For loop logic of jinja template -->
+            {%for htweetdata in nhtweets%} 
+              
+                <li>{{ htweetdata.text }}</li> 
+            {%endfor%} 
+              
+        </ol>
+        <h3>Hospitals open near you</h3>>
+        {% for result in data['local_results'] %}
+            <li>
+            <p>title = {{ result['title'] }} </p><br>
+            <p>addr = {{ result['address'] }} </p><br>
+            <p>ratings = {{ result['rating'] }} </p><br>
+            <p>reviews = {{ result['reviews'] }} </p><br>
+            </li>
+        {% endfor %}        
+        
+        <h3>Twitter Sentiment Analysis of Restaurants in Your Area</h3>
+        <table style="width:100%">
+            <tr>
+                <th>Positive tweets percentage</th>
+                <th>negative tweets percentage</th>
+                <th>neutral tweets percentage</th>
+              </tr>
+              <tr>
+                <td>{{ prtweetper }}</td>              
+                <td>{{ nrtweetper }}</td>
+                <td>{{ rneutper }}</td>
+              </tr>               
+        </table>
+        <h3>Positive Tweets For Restaurants</h3>
+        <ol> 
+            <!-- For loop logic of jinja template -->
+            {%for rtweetdata in prtweets%} 
+              
+                <li>{{ rtweetdata.text }}</li> 
+            {%endfor%} 
+              
+        </ol> 
+        <h3>Negative Tweets for Restaurants</h3>
+        <ol> 
+            <!-- For loop logic of jinja template -->
+            {%for rtweetdata in nrtweets%} 
+              
+                <li>{{ rtweetdata.text }}</li> 
+            {%endfor%} 
+              
+        </ol>
+        <h3>Twitter Sentiment Analysis of SHOPS in Your Area</h3>
+        <table style="width:100%">
+            <tr>
+                <th>Positive tweets percentage</th>
+                <th>negative tweets percentage</th>
+                <th>neutral tweets percentage</th>
+              </tr>
+              <tr>
+                <td>{{ pstweetper }}</td>              
+                <td>{{ nstweetper }}</td>
+                <td>{{ sneutper }}</td>
+              </tr>               
+        </table>
+        <h3>Positive Tweets For shops</h3>
+        <ol> 
+            <!-- For loop logic of jinja template -->
+            {%for stweetdata in pstweets%} 
+              
+                <li>{{ stweetdata.text }}</li> 
+            {%endfor%} 
+              
+        </ol> 
+        <h3>Negative Tweets for shpos</h3>
+        <ol> 
+            <!-- For loop logic of jinja template -->
+            {%for stweetdata in nstweets%} 
+              
+                <li>{{ stweetdata.text }}</li> 
+            {%endfor%} 
+              
+        </ol>
+    </div>
+</div>   
+
 
 {% endblock %}
