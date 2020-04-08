@@ -14,7 +14,7 @@ a) Corona Database Scrapping
 
 b) Detecting your location through city,country,state and GPS coordinates
 
-c) Twiiter sentiment Analysis of Corona near you, and hospitals,shops and restaurants near you. 
+c) Twitter sentiment Analysis of Corona near you, and hospitals,shops and restaurants near you. 
  
 d) Scrapping Google Maps for hospitals near me
 
@@ -58,7 +58,7 @@ python3 app.py
 ![alt text](static/images/main.png)
 
 
-### Twiiter sentiment Analysis of Corona near you, and hospitals,shops and restaurants near you. 
+### Twitter sentiment Analysis of Corona near you, and hospitals,shops and restaurants near you. 
 
 ![alt text](static/images/result2.png)
 
